@@ -98,15 +98,16 @@ CREATE TYPE "main"."asicQuality" AS ENUM (
 CREATE TYPE "main"."blockType" AS ENUM (
   'AncMPW1_SLDO',
   'AncMPW1_NVBG',
-  'AncMPW1_CML_TRANSCEIVER'
+  'AncMPW1_CML_TRANSCEIVER',
+  'AncMPW2_SLDO',
+  'AncMPW2_NVBG',
+  'AncMPW2_CML_TRANSCEIVER'
 );
 
 CREATE TYPE "main"."dutType" AS ENUM (
   'MOSAIX',
   'BABYMOSAIX',
-  'AncMPW1_SLDO',
-  'AncMPW1_NVBG',
-  'AncMPW1_CML_TRANSCEIVER'
+  'AncMPW2_SLDO'
 );
 
 CREATE TYPE "main"."engineeringRun" AS ENUM (
@@ -114,7 +115,8 @@ CREATE TYPE "main"."engineeringRun" AS ENUM (
   'ER2',
   'ER3',
   'LAS1',
-  'AncMPW1'
+  'AncMPW1',
+  'AncMPW2'
 );
 
 CREATE TYPE "main"."foundryName" AS ENUM (
