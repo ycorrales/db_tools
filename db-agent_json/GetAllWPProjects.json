@@ -1,0 +1,10 @@
+[
+  {
+    "type": "GetAllWaferProbeProjects",
+    "data": {
+      "filter": {
+        "ids": [3]
+      }
+    }
+  }
+]

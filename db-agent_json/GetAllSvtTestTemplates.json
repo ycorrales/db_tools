@@ -1,7 +1,7 @@
 [
   {
     "data": {
-      "filter": {}
+      "filter": { "ids": [1], "dutTypes": ["MOSAIX"] }
     },
     "type": "GetAllSvtTestTemplates"
   }
