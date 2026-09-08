@@ -138,11 +138,9 @@ def getMaxVersionId():
     global conn
     with conn.cursor() as cur:
         try:
-            cur.execute(
-                """
+            cur.execute("""
                 SELECT MAX(ID) FROM test.VERSION;
-            """
-            )
+            """)
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
 
@@ -157,15 +155,13 @@ def getAllEnumTypes():
     global conn
     with conn.cursor() as cur:
         try:
-            cur.execute(
-                """
+            cur.execute("""
                 SELECT DISTINCT n.nspname AS enum_schema,
                     t.typname AS enum_name
                 FROM pg_type t
                     join pg_enum e on t.oid = e.enumtypid
                     join pg_catalog.pg_namespace n ON n.oid = t.typnamespace;
-                        """
-            )
+                        """)
             return cur.fetchall()
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
@@ -178,22 +174,18 @@ def getAllEnumValues(enum_type=None):
     with conn.cursor() as cur:
         try:
             if enum_type is None:
-                cur.execute(
-                    """
+                cur.execute("""
                     SELECT n.nspname AS enum_schema,
                         t.typname AS enum_name,
                         e.enumlabel AS enum_value
                     FROM pg_type t
                         join pg_enum e on t.oid = e.enumtypid
                         join pg_catalog.pg_namespace n ON n.oid = t.typnamespace;
-                        """
-                )
+                        """)
             else:
-                cur.execute(
-                    f"""
+                cur.execute(f"""
                     select enum_range(null::Prod."{enum_type}");
-                    """
-                )
+                    """)
             return cur.fetchall()
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
@@ -205,12 +197,10 @@ def addEnumValue(schema, enum_type_name, value):
     global conn
     with conn.cursor() as cur:
         try:
-            cur.execute(
-                f"""
+            cur.execute(f"""
                         ALTER TYPE {schema}.{enum_type_name}
                         ADD VALUE IF NOT EXISTS '{value}';
-                        """
-            )
+                        """)
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
 
