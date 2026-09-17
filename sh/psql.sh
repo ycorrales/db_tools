@@ -9,7 +9,7 @@
   thisScriptPath=$(cd "$(dirname "${BASH_SOURCE[0]:-0}")" &>/dev/null && pwd -P)
 
   _psql_exec() {
-    eval " PGOPTIONS=\"--search_path=$db_schema\" psql${PSQL_CMD_SUFFIX:+${PSQL_CMD_SUFFIX}} -h $HOST -U admin -p 6600 ${*:+$*}"
+    eval " PGOPTIONS=\"--search_path=$db_schema\" psql -h $HOST -U admin -p 6600 ${*:+$*}"
   }
 
   _chTZ() {
@@ -58,8 +58,8 @@
 
   _dumpdb() {
     echo "Dumping database $db_name"
-    pg_dump${PSQL_CMD_SUFFIX:+${PSQL_CMD_SUFFIX}} -h $HOST -p 6600 -d "$db_name" -U admin -s -F p -E UTF-8 -f "$db_name"-schema.sql
-    pg_dump${PSQL_CMD_SUFFIX:+${PSQL_CMD_SUFFIX}} -h $HOST -p 6600 -d "$db_name" -U admin -a -F p -E UTF-8 -f "$db_name"-data.sql
+    pg_dump -h $HOST -p 6600 -d "$db_name" -U admin -s -F p -E UTF-8 -f "$db_name"-schema.sql
+    pg_dump -h $HOST -p 6600 -d "$db_name" -U admin -a -F p -E UTF-8 -f "$db_name"-data.sql
   }
 
   _restartSeq() {
@@ -121,13 +121,11 @@
     exit 1
   }
 
-  PSQL_CMD_SUFFIX=
   while [ $# -gt 0 ]; do
     action=${1:-}
 
     case $action in
     --local)
-      PSQL_CMD_SUFFIX='-17'
       HOST='localhost'
       shift
       ;;
