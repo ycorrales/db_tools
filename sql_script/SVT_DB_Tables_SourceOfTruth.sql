@@ -449,10 +449,14 @@ CREATE TABLE "main"."SvtTestList" (
 );
 
 CREATE TABLE "main"."SvtTestListToEntityName" (
-  "testId" integer,
+  "testId" integer NOT NULL,
   "dutEntityName" main."dutEntityName" NOT NULL,
-  "dutId" integer,
   PRIMARY KEY ("dutEntityName", "testId")
+);
+
+CREATE TABLE "main"."SvtTestListToEntityId" (
+  "testId" integer NOT NULL,
+  "dutId" integer NOT NULL
 );
 
 CREATE UNIQUE INDEX ON "main"."SvtTestTypeConfig" ("testTypeId", "name");
@@ -518,3 +522,5 @@ ALTER TABLE "main"."SvtTestList" ADD FOREIGN KEY ("testTypeConfigId") REFERENCES
 ALTER TABLE "main"."SvtTestList" ADD FOREIGN KEY ("testSetupConfigId") REFERENCES "main"."SvtTestSetupConfig" ("id") DEFERRABLE INITIALLY IMMEDIATE;
 
 ALTER TABLE "main"."SvtTestListToEntityName" ADD FOREIGN KEY ("testId") REFERENCES "main"."SvtTestList" ("id") DEFERRABLE INITIALLY IMMEDIATE;
+
+ALTER TABLE "main"."SvtTestListToEntityId" ADD FOREIGN KEY ("testId") REFERENCES "main"."SvtTestList" ("id") DEFERRABLE INITIALLY IMMEDIATE;
