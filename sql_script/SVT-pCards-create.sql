@@ -1,20 +1,21 @@
-
 --Taking from
-INSERT INTO probecard VALUES (
-  1,
-  'MVP251669H',
-  'MPI',
-  'NKF7_MPI',
-  'NKF7-TS3500-CABLEOUT-MLO(EVS-P)',
-  2,
-  '6/6/2025',
-  'CERN',
-  'Vertical',
-  200
-);
+INSERT INTO
+  main."ProbeCard"
+VALUES
+  (
+    2,
+    'MVP255241H',
+    'MPI',
+    'MOSAIX-LEC',
+    'MOSAIX-LEC-TS3500-CABLEOUT-OTHERS-MLOO-EVS-P-VY540',
+    1,
+    '6/6/2026',
+    'CERN',
+    'Vertical',
+    200
+  );
 
-INSERT INTO probecardfamilytype VALUES (
-  1,
-  'NKF7'
-);
-
+INSERT INTO
+  main."ProbeCardFamilyType"
+VALUES
+  ((2, 'MOSAIX'), (2, 'BABYMOSAIX'));

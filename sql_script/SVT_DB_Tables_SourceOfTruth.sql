@@ -140,6 +140,7 @@ CREATE TYPE "main"."pcLocation" AS ENUM (
 
 CREATE TYPE "main"."pcModel" AS ENUM (
   'NKF7-TS3500-CABLEOUT-MLO(EVS-P)',
+  'MOSAIX-LEC-TS3500-CABLEOUT-OTHERS-MLOO-EVS-P-VY540',
   'MosaixLeft',
   'MosaixRight',
   'LAS',
@@ -149,6 +150,7 @@ CREATE TYPE "main"."pcModel" AS ENUM (
 
 CREATE TYPE "main"."pcName" AS ENUM (
   'NKF7_MPI',
+  'MOSAIX_LEC',
   'BabyMOSS_Korea',
   'Mosaix_Korea'
 );
