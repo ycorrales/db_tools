@@ -307,7 +307,7 @@ CREATE TABLE "main"."ProbeCard" (
   "name" main."pcName" UNIQUE NOT NULL,
   "model" main."pcModel" NOT NULL,
   "version" integer NOT NULL,
-  "arrivalDate" date NOT NULL,
+  "arriveDate" date NOT NULL,
   "location" main."pcLocation" NOT NULL,
   "type" main."pcType" NOT NULL,
   "vendorCleaningInterval" integer NOT NULL
