@@ -182,6 +182,7 @@
       shift 2
       ;;
     --run)
+      db_name=${db_name:-'svt_sw_db_test'}
       _run "${2:-}"
       shift 2
       ;;
